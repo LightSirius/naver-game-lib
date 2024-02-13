@@ -1,0 +1,36 @@
+{
+  "name": "naver-game-lib",
+  "version": "0.0.1",
+  "description": "Naver game channeling library",
+  "keywords": [
+    "naver",
+    "game",
+    "channeling",
+    "hmac",
+    "api",
+    "auth",
+    "oauth",
+    "authentication",
+    "oauth2"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/LightSirius/naver-game-lib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LightSirius/naver-game-lib/issues"
+  },
+  "author": {
+    "name": "LightSirius",
+    "email": "lightsirius.dev@gmail.com",
+    "url": "http://github.com/LightSirius"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
+  "main": "./lib",
+  "license": "MIT"
+}
