@@ -1,6 +1,6 @@
 {
   "name": "naver-game-lib",
-  "version": "0.0.1",
+  "version": "0.0.1a",
   "description": "Naver game channeling library",
   "keywords": [
     "naver",
@@ -31,9 +31,21 @@
       "url": "http://www.opensource.org/licenses/MIT"
     }
   ],
-  "main": "./lib",
+  "files": [
+    "dist/"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
   "license": "MIT",
   "devDependencies": {
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@types/node": "^20.11.17",
+    "axios": "^1.6.7",
+    "crypto": "^1.0.1"
   }
 }
