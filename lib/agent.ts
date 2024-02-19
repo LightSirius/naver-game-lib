@@ -1,5 +1,5 @@
 import * as crypto from 'crypto';
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 export interface AgentCreateOption{
   clientID?: string;
@@ -27,13 +27,21 @@ export default class NglAgent{
   }
 
   async getAccessToken(auth: string, state: string){
-    const url = `https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id=${this.option.clientID}&client_secret=${this.option.clientSecretKey}&code=${auth}&state=${state}`;
-    return await axios.get(url);
+    const apiEndpoint = `https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id=${this.option.clientID}&client_secret=${this.option.clientSecretKey}&code=${auth}&state=${state}`;
+    return await axios.get(apiEndpoint);
   }
 
   async renewAccessToken(token: string){
-    const url = `https://nid.naver.com/oauth2.0/token?grant_type=refresh_token&client_id=${this.option.clientID}&client_secret=${this.option.clientSecretKey}&refresh_token=${token}`;
-    return await axios.get(url);
+    const apiEndpoint = `https://nid.naver.com/oauth2.0/token?grant_type=refresh_token&client_id=${this.option.clientID}&client_secret=${this.option.clientSecretKey}&refresh_token=${token}`;
+    return await axios.get(apiEndpoint);
+  }
+
+  async getUserInfo(token: string){
+    const apiEndpoint = this.url + 'gdp/member_getUserInfo.json';
+    const config: AxiosRequestConfig = {
+      headers: {Authorization: `Bearer ${token}`}
+    }
+    return await axios.get(apiEndpoint, config);
   }
 
   async makeHmacUrl(url: string, key: string, login: string){
