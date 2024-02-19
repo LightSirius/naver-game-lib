@@ -26,6 +26,11 @@ export default class NglAgent{
     return `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${this.option.clientID}&redirect_uri=${url}&state=${state}`;
   }
 
+  async getAccessToken(auth: string, state: string){
+    const url = `https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id=${this.option.clientID}&client_secret=${this.option.clientSecretKey}&code=${auth}&state=${state}`;
+    return await axios.get(url);
+  }
+
   async makeHmacUrl(url: string, key: string, login: string){
     const now = new Date();
     const param = {
