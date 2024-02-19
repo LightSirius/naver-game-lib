@@ -31,6 +31,11 @@ export default class NglAgent{
     return await axios.get(url);
   }
 
+  async renewAccessToken(token: string){
+    const url = `https://nid.naver.com/oauth2.0/token?grant_type=refresh_token&client_id=${this.option.clientID}&client_secret=${this.option.clientSecretKey}&refresh_token=${token}`;
+    return await axios.get(url);
+  }
+
   async makeHmacUrl(url: string, key: string, login: string){
     const now = new Date();
     const param = {
